@@ -5,7 +5,8 @@ const EmpContext = React.createContext({
   filteredUsers: [{}],
   order: "",
   headings: [{}],
-  handleSearchChange: ()=>{},
+  handleSearchChange: () => {},
+  handleSort: () => {}
 });
 
 export default EmpContext;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import DataTable from "./DataTable";
-import Nav from "./Nav";
 import API from "../utils/API";
 import EmpContext from "../utils/EmpContext";
+import SearchBox from "./SearchBox";
 
-const StyledHeader = styled.div`
+const StyledDataArea = styled.div`
 
 `;
 
@@ -21,49 +21,54 @@ const DataArea = () => {
     {name: "DOB", width: "10%"},
   ]);
   
-  handleSort = () =>{
-    if (order === "decending")
-      setOrder("ascending")
-    else
-      setOrder("decending")
-  }
-
-  sortUsers = () =>{
-
-
-  }
-
-  handleSearchChange = event =>{
-    const search = event.target.value;
-    const filteredList = users.filter(item =>{
-      let list = Object.values(item).join("").toLowerCase;
-      return list.indexOf(search.toLowerCase()) !== -1;
-    });
-    setFilteredUsers(filteredList);
-  }
-
   useEffect(() =>{
     API.getUsers()
       .then(res =>{
         setUsers(res.data.results);
         setFilteredUsers(res.data.results);
+      }).catch(err => {
+        console.log(err);
       })
-  })
+  }, []);
+  
+  const handleSort = () =>{
+    if (order === "decending"){
+      filteredUsers.sort((a, b) => (a.name.first < b.name.first) ? 1 : (a.name.first === b.name.first)
+        ? ((a.name.last < b.name.last) ? 1 : -1) : -1);
+      setOrder("ascending");
+    } else{
+      filteredUsers.sort((a, b) => (a.name.first > b.name.first) ? 1 : (a.name.first === b.name.first)
+        ? ((a.name.last > b.name.last) ? 1 : -1) : -1);
+      setOrder("decending")
+    }
+  }
 
+  const handleSearchChange = event =>{
+    const search = event.target.value;
+    const filteredList = users.filter(item =>{
+      let list = Object.values(item).join("").toLowerCase();
+      return list.indexOf(search.toLowerCase()) !== -1;
+    });
+    setFilteredUsers(filteredList);
+  }
 
   return(
     <EmpContext.Provider
-      value={{ 
+      value={{
+        users,
         filteredUsers, 
         order,
-        handleSearchChange,
         headings,
+        handleSearchChange,
+        handleSort
       }}
     >
-      <Nav />
-      <div className="data-area">
-        <DataTable />
-      </div>
+      <h2>Returned from Data Area</h2>
+      {/* <Nav /> */}
+
+      <SearchBox />
+      <DataTable />
+
     </EmpContext.Provider>
   );
 } //End of DataArea

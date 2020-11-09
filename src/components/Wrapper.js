@@ -1,16 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import Main from "./Main";
 import Header from "./Header";
+import DataArea from "./DataArea";
+import SearchBox from "./SearchBox";
 
-const StyledHeader = styled.div`
+const StyledWrapper = styled.div`
 
 `;
 
 const Wrapper = () =>{
   return(
-  <StyledHeader>
+  <StyledWrapper>
       <Header />
-  </StyledHeader>
+      <Main>
+        <DataArea />
+      </Main>
+  </StyledWrapper>
   )
 }
 

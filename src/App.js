@@ -4,11 +4,8 @@ import Wrapper from "./components/Wrapper.js";
 
 function App() {
   return (
-    <div className="App">
-      <Wrapper>
-      </Wrapper>
-    </div>
-  );
+    <Wrapper />
+   );
 }
 
 export default App;
