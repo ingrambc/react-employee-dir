@@ -63,9 +63,6 @@ const DataArea = () => {
         handleSort
       }}
     >
-      <h2>Returned from Data Area</h2>
-      {/* <Nav /> */}
-
       <SearchBox />
       <DataTable />
 
