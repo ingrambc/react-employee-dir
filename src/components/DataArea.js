@@ -15,10 +15,10 @@ const DataArea = () => {
   const [order, setOrder] = useState("decending");
   const [headings, setHeadings] = useState([
     {name: "Image", width: "10%"},
-    {name: "Name", width: "10%"},
+    {name: "Name", width: "15%"},
     {name: "Phone", width: "20%"},
     {name: "Email", width: "20%"},
-    {name: "DOB", width: "10%"},
+    {name: "DOB", width: "15%"},
   ]);
   
   useEffect(() =>{

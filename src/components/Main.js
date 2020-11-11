@@ -6,6 +6,7 @@ const StyledMain = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #D5E964;
 `;
 
 const Main = ({ children }) => {

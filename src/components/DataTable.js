@@ -4,7 +4,18 @@ import EmpContext from "../utils/EmpContext";
 import DataBody from "./DataBody";
 
 const StyledDataTable = styled.div`
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  table{
+    font-weight: bold;
+  }
+  tbody tr::nth-child(odd){
+    background-color: #DFEEDA;
+  }
+  tbody tr::nth-child(even){
+    background-color: #C2D1BD;
+  } 
 `;
 
 
